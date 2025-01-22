@@ -1,9 +1,16 @@
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, varchar, index } from "drizzle-orm/pg-core";
 
-export const usersTable = pgTable("users", {
-  id: integer().primaryKey().generatedAlwaysAsIdentity(),
-  password: varchar({ length: 255 }).notNull(),
-  name: varchar({ length: 255 }).notNull(),
-  age: integer().notNull(),
-  email: varchar({ length: 255 }).notNull().unique(),
-});
+export const urls = pgTable(
+	//建立我資料庫的架構
+	"urls",
+	{
+		short: varchar(10).primaryKey(),
+		origin: varchar(255).notNull(),
+	},
+	(table) => {
+		return {
+			originIndex: index("origin_idx").on(table.origin), // This is an example of how to create an index
+			//short 不用幫她建index是因為unique 就會有index屬性
+		};
+	},
+);

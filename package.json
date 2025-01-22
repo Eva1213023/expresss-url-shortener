@@ -8,7 +8,7 @@
     "dev": "node --watch-path=./src ./src/main.js | pino-pretty",
     "test": "node ./tests/*"
   },
-  "author": "Josh",
+  "author": "Eva",
   "license": "MIT",
   "description": "",
   "dependencies": {
@@ -19,6 +19,7 @@
     "drizzle-orm": "^0.38.4",
     "express": "^5.0.1",
     "jsonwebtoken": "^9.0.2",
+    "nanoid": "^5.0.9",
     "pino-http": "^10.4.0"
   },
   "devDependencies": {
